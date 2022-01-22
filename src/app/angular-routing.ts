@@ -3,10 +3,18 @@ import { Routes, RouterModule } from '@angular/router'; // CLI imports router
 import { HelloComponent } from './hello.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   { path: 'home', component: HelloComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent,
+    children: [
+      {
+        path: 'settings', 
+        component: SettingsComponent,
+      }
+    ],
+  },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent}
 ];
